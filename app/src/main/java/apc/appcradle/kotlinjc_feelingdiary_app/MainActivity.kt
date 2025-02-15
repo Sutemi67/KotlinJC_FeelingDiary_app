@@ -62,6 +62,7 @@ fun Greeting() {
                 })
 
                 is CardState.Third -> ThirdCard { state.value = CardState.First }
+                is CardState.Fourth -> {}
             }
         }
     }

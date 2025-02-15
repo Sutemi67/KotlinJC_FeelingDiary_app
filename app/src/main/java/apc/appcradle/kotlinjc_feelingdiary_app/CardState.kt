@@ -4,5 +4,6 @@ sealed interface CardState {
     object First : CardState
     object Second : CardState
     object Third : CardState
+    object Fourth : CardState
 
 }
