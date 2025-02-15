@@ -17,15 +17,14 @@ fun ThirdCard(onClick: () -> Unit) {
             .wrapContentSize()
             .padding(10.dp)
     ) {
-        item { ThirdCardListItem("Гнев", Color(0xFFFFC2AA)) }
-        item { ThirdCardListItem("Зависть", Color(0xFFBCFFAA)) }
-        item { ThirdCardListItem("Ненависть", Color(0xFFE1BEE7)) }
+        item { ThirdCardListItem("Гнев", Color(0xFFFFC2AA), onClick) }
+        item { ThirdCardListItem("Зависть", Color(0xFFBCFFAA), onClick) }
+        item { ThirdCardListItem("Ненависть", Color(0xFFE1BEE7), onClick) }
     }
-
 }
 
 @Preview
 @Composable
 fun Ffsx() {
-    ThirdCard({})
+    ThirdCard {}
 }

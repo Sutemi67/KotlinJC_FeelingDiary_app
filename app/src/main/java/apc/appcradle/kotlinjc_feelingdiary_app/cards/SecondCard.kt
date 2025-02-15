@@ -25,9 +25,7 @@ fun SecondCard(onClick: () -> Unit) {
             .size(250.dp, 100.dp),
         border = BorderStroke(1.dp, Color.Black),
         colors = CardDefaults.cardColors(containerColor = Color(0xFFF1D0BE)),
-        onClick = {
-            onClick()
-        }
+        onClick = { onClick() }
     ) {
         Box(
             modifier = Modifier.fillMaxSize(),
@@ -47,5 +45,5 @@ fun SecondCard(onClick: () -> Unit) {
 @Preview
 @Composable
 fun Ffs() {
-    SecondCard({})
+    SecondCard {}
 }
