@@ -23,7 +23,7 @@ fun ListItem(text: String, color: Color, onClick: () -> Unit) {
         elevation = CardDefaults.cardElevation(3.dp),
         modifier = Modifier
             .width(260.dp)
-            .padding(6.dp),
+            .padding(3.dp),
         colors = CardDefaults.cardColors(containerColor = color),
         onClick = { onClick() }
     ) {

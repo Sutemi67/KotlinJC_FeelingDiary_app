@@ -1,4 +1,4 @@
-package apc.appcradle.kotlinjc_feelingdiary_app.cards
+package apc.appcradle.kotlinjc_feelingdiary_app.data
 
 import androidx.compose.ui.graphics.Color
 import apc.appcradle.kotlinjc_feelingdiary_app.CardState
