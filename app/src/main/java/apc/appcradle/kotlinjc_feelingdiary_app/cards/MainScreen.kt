@@ -80,6 +80,8 @@ fun MainScreen() {
                 CardState.ListLove -> ListOfFeels(loveFeelingsList) { st -> state.value = st }
                 CardState.ListSad -> ListOfFeels(sadFeelingsList) { st -> state.value = st }
                 CardState.ListShame -> ListOfFeels(shameFeelingsList) { st -> state.value = st }
+                is CardState.OneFeelDescribing -> OneFeelDescribing(targetState.feel)
+
             }
         }
     }

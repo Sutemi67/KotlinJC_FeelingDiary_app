@@ -16,3 +16,7 @@ val shameColor200 = Color(0xFFC1B3DB)
 val sadnessColor200 = Color(0xFFC9C9C9)
 val funColor200 = Color(0xFFFADEB5)
 val loveColor200 = Color(0xFFF6A8C2)
+
+val activeBorderField = Color(0x4A000000)
+val inactiveBorderField = Color(0x95282828)
+val dividerColor = Color(0x95656565)

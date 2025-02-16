@@ -3,7 +3,7 @@ package apc.appcradle.kotlinjc_feelingdiary_app.cards
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
@@ -13,7 +13,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import apc.appcradle.kotlinjc_feelingdiary_app.CardState
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.titleTextStyle
 
@@ -22,8 +21,8 @@ fun ListItem(text: String, color: Color, onClick: () -> Unit) {
     Card(
         elevation = CardDefaults.cardElevation(3.dp),
         modifier = Modifier
-            .width(260.dp)
-            .padding(3.dp),
+            .size(260.dp, 50.dp)
+            .padding(5.dp),
         colors = CardDefaults.cardColors(containerColor = color),
         onClick = { onClick() }
     ) {
