@@ -2,7 +2,6 @@
     <string name="app_name">KotlinJC_FeelingDiary_app</string>
     <string name="anger">Злость</string>
     <string name="secondCardText">Выбери из следующего списка основную эмоцию, а затем уточни.</string>
-    <string name="firstCardText">Привет!
-
-Что ты чувствуешь сейчас?</string>
+    <string name="firstCardText">Привет!\nХочешь записать, что ты чувствуешь сейчас?</string>
+    <string name="firstCardText2">Хочу посмотреть историю моих записей</string>
 </resources>

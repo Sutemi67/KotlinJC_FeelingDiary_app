@@ -52,7 +52,6 @@ fun KotlinJC_FeelingDiary_appTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
         content = content
     )
 }

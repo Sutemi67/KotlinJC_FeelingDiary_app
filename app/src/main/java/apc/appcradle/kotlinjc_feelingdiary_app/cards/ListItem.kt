@@ -11,18 +11,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import apc.appcradle.kotlinjc_feelingdiary_app.CardState
+import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.titleTextStyle
 
 @Composable
-fun ThirdCardListItem(text: String, color: Color, onClick: () -> Unit) {
+fun ListItem(text: String, color: Color, onClick: () -> Unit) {
     Card(
         elevation = CardDefaults.cardElevation(3.dp),
         modifier = Modifier
-            .width(250.dp)
+            .width(260.dp)
             .padding(6.dp),
         colors = CardDefaults.cardColors(containerColor = color),
         onClick = { onClick() }
@@ -34,10 +34,7 @@ fun ThirdCardListItem(text: String, color: Color, onClick: () -> Unit) {
             Text(
                 text = text,
                 modifier = Modifier.padding(10.dp),
-                style = TextStyle(
-                    fontSize = 20.sp,
-                    textAlign = TextAlign.Center
-                )
+                style = titleTextStyle
             )
         }
     }
@@ -46,5 +43,5 @@ fun ThirdCardListItem(text: String, color: Color, onClick: () -> Unit) {
 @Preview
 @Composable
 fun Dd() {
-    ThirdCardListItem("Гнев", Color.White) {}
+    ListItem("Гнев", Color.White) { CardState.First }
 }
