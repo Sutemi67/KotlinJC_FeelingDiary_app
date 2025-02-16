@@ -24,28 +24,26 @@ val mainFeelingsList = listOf<Feeling>(
     Feeling("Любовь", loveColor200, CardState.ListLove),
 )
 
-fun getAnger(index: Int): Feeling =angerFeelingsList[index]
 
 val angerFeelingsList = listOf<Feeling>(
-    Feeling("Ирония", angerColor200, CardState.OneFeelDescribing(getAnger(0))),
-    Feeling("Недовольство", angerColor200, CardState.OneFeelDescribing(getAnger(1))),
-    Feeling("Возмущение", angerColor200, CardState.OneFeelDescribing(getAnger(2))),
-    Feeling("Досада", angerColor200, CardState.OneFeelDescribing(getAnger(3))),
-    Feeling("Раздражение", angerColor200, CardState.OneFeelDescribing(getAnger(4))),
-    Feeling("Обида", angerColor200, CardState.OneFeelDescribing(getAnger(5))),
-    Feeling("Уязвленность", angerColor200, CardState.OneFeelDescribing(getAnger(6))),
-    Feeling("Зависть", angerColor200, CardState.OneFeelDescribing(getAnger(7))),
-    Feeling("Ревность", angerColor200, CardState.OneFeelDescribing(getAnger(8))),
-    Feeling("Униженность", angerColor200, CardState.OneFeelDescribing(getAnger(9))),
-    Feeling("Негодование", angerColor200, CardState.OneFeelDescribing(getAnger(10))),
-    Feeling("Презрение", angerColor200, CardState.OneFeelDescribing(getAnger(11))),
-    Feeling("Злость", angerColor200, CardState.OneFeelDescribing(getAnger(12))),
-    Feeling("Ненависть", angerColor200, CardState.OneFeelDescribing(getAnger(13))),
-    Feeling("Ярость", angerColor200, CardState.OneFeelDescribing(getAnger(14))),
-    Feeling("Бешенство", angerColor200, CardState.OneFeelDescribing(getAnger(15))),
-    Feeling("Истерия", angerColor200, CardState.OneFeelDescribing(getAnger(16))),
+    Feeling("Ирония", angerColor200, CardState.OneFeelDescribing("Ирония", angerColor200)),
+    Feeling("Недовольство", angerColor200, CardState.OneFeelDescribing("Недовольство", angerColor200)),
+    Feeling("Возмущение", angerColor200, CardState.OneFeelDescribing("Возмущение", angerColor200)),
+    Feeling("Досада", angerColor200, CardState.OneFeelDescribing("Досада", angerColor200)),
+    Feeling("Раздражение", angerColor200, CardState.OneFeelDescribing("Раздражение", angerColor200)),
+    Feeling("Обида", angerColor200, CardState.OneFeelDescribing("Обида", angerColor200)),
+    Feeling("Уязвленность", angerColor200, CardState.OneFeelDescribing("Уязвленность", angerColor200)),
+    Feeling("Зависть", angerColor200, CardState.OneFeelDescribing("Зависть", angerColor200)),
+    Feeling("Ревность", angerColor200, CardState.OneFeelDescribing("Ревность", angerColor200)),
+    Feeling("Униженность", angerColor200, CardState.OneFeelDescribing("Униженность", angerColor200)),
+    Feeling("Негодование", angerColor200, CardState.OneFeelDescribing("Негодование", angerColor200)),
+    Feeling("Презрение", angerColor200, CardState.OneFeelDescribing("Презрение", angerColor200)),
+    Feeling("Злость", angerColor200, CardState.OneFeelDescribing("Злость", angerColor200)),
+    Feeling("Ненависть", angerColor200, CardState.OneFeelDescribing("Ненависть", angerColor200)),
+    Feeling("Ярость", angerColor200, CardState.OneFeelDescribing("Ярость", angerColor200)),
+    Feeling("Бешенство", angerColor200, CardState.OneFeelDescribing("Бешенство", angerColor200)),
+    Feeling("Истерия", angerColor200, CardState.OneFeelDescribing("Истерия", angerColor200)),
 )
-
 
 
 val fearFeelingsList = listOf<Feeling>(

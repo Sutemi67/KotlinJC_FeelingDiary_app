@@ -1,8 +1,6 @@
 package apc.appcradle.kotlinjc_feelingdiary_app.cards
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
@@ -20,11 +18,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import apc.appcradle.kotlinjc_feelingdiary_app.data.Feeling
 import apc.appcradle.kotlinjc_feelingdiary_app.data.angerFeelingsList
-import apc.appcradle.kotlinjc_feelingdiary_app.data.fearFeelingsList
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.activeBorderField
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.dividerColor
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.funColor200
@@ -34,7 +31,7 @@ import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.mediumTextStyle
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.sadnessColor200
 
 @Composable
-fun OneFeelDescribing(feeling: Feeling) {
+fun OneFeelDescribing(name: String, color: Color) {
 
     var sliderPosition by remember { mutableFloatStateOf(0f) }
     var text by remember { mutableStateOf("") }
@@ -45,8 +42,7 @@ fun OneFeelDescribing(feeling: Feeling) {
             .wrapContentSize()
             .width(300.dp)
     ) {
-        Spacer(Modifier.height(50.dp))
-        ListItem(feeling.name, feeling.color) { }
+        ListItem(name, color) { }
         HorizontalDivider(
             thickness = 1.dp,
             color = dividerColor,
@@ -90,5 +86,5 @@ fun OneFeelDescribing(feeling: Feeling) {
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun Lld() {
-    OneFeelDescribing(angerFeelingsList[1])
+    OneFeelDescribing(angerFeelingsList[1].name, angerFeelingsList[1].color)
 }

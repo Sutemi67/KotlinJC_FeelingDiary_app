@@ -65,6 +65,7 @@ fun MainScreen() {
                         }
                     }
                 }
+
                 CardState.Second -> {
                     TextCard(
                         stringResource(R.string.secondCardText),
@@ -73,6 +74,7 @@ fun MainScreen() {
                         state.value = CardState.MainList
                     }
                 }
+
                 CardState.MainList -> ListOfFeels(mainFeelingsList) { st -> state.value = st }
                 CardState.ListAnger -> ListOfFeels(angerFeelingsList) { st -> state.value = st }
                 CardState.ListFear -> ListOfFeels(fearFeelingsList) { st -> state.value = st }
@@ -80,8 +82,10 @@ fun MainScreen() {
                 CardState.ListLove -> ListOfFeels(loveFeelingsList) { st -> state.value = st }
                 CardState.ListSad -> ListOfFeels(sadFeelingsList) { st -> state.value = st }
                 CardState.ListShame -> ListOfFeels(shameFeelingsList) { st -> state.value = st }
-                is CardState.OneFeelDescribing -> OneFeelDescribing(targetState.feel)
-
+                is CardState.OneFeelDescribing -> OneFeelDescribing(
+                    targetState.feel,
+                    targetState.color
+                )
             }
         }
     }
