@@ -84,7 +84,9 @@ fun MainScreen() {
                 CardState.ListShame -> ListOfFeels(shameFeelingsList) { st -> state.value = st }
                 is CardState.OneFeelDescribing -> OneFeelDescribing(
                     targetState.feel,
-                    targetState.color
+                    targetState.color,
+                    { state.value = CardState.MainList },
+                    { state.value = CardState.First },
                 )
             }
         }
