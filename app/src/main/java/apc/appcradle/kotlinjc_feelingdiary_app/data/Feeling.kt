@@ -24,7 +24,6 @@ val mainFeelingsList = listOf<Feeling>(
     Feeling("Любовь", loveColor200, CardState.ListLove),
 )
 
-
 val angerFeelingsList = listOf<Feeling>(
     Feeling("Ирония", angerColor200, CardState.OneFeelDescribing("Ирония", angerColor200)),
     Feeling("Недовольство", angerColor200, CardState.OneFeelDescribing("Недовольство", angerColor200)),
@@ -44,7 +43,6 @@ val angerFeelingsList = listOf<Feeling>(
     Feeling("Бешенство", angerColor200, CardState.OneFeelDescribing("Бешенство", angerColor200)),
     Feeling("Истерия", angerColor200, CardState.OneFeelDescribing("Истерия", angerColor200)),
 )
-
 
 val fearFeelingsList = listOf<Feeling>(
     Feeling("Застенчивость", fearColor200, CardState.First),

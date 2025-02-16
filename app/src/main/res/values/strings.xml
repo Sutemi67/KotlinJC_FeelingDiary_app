@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">KotlinJC_FeelingDiary_app</string>
-    <string name="anger">Злость</string>
-    <string name="secondCardText">Выбери из следующего списка основную эмоцию, а затем уточни.</string>
-    <string name="firstCardText">Привет!\nХочешь записать, что ты чувствуешь сейчас?</string>
-    <string name="firstCardText2">Хочу посмотреть историю моих записей</string>
+    <string name="app_name" translatable="false">Feelings Diary</string>
+    <string name="anger">Anger</string>
+    <string name="secondCardText" translatable="false">Выбери из следующего списка основную эмоцию, а затем уточни.</string>
+    <string name="firstCardText" translatable="false">Привет!\nХочешь записать, что ты чувствуешь сейчас?</string>
+    <string name="firstCardText2" translatable="false">Хочу посмотреть историю моих записей</string>
 </resources>
