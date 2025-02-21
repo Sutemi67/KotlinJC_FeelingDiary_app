@@ -30,6 +30,7 @@ import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.activeBorderField
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.dividerColor
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.funColor200
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.inactiveBorderField
+import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.labelTextStyle
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.loveColor200
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.mediumTextStyle
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.sadnessColor200
@@ -53,7 +54,9 @@ fun OneFeelDescribing(name: String, color: Color, onClick1: () -> Unit, onClick2
             modifier = Modifier.padding(vertical = 40.dp)
         )
         Text(
-            text = "Опиши, насколько сильно твое чувство и, если захочешь, добавь комментарий",
+            text = "Опиши, насколько сильно твое чувство и, если захочешь, добавь комментарий\n\n" +
+                    "Что ты хочешь сделать сейчас?\n\n" +
+                    "Что ты чувствуешь сейчас?",
             style = mediumTextStyle,
         )
 
@@ -72,7 +75,9 @@ fun OneFeelDescribing(name: String, color: Color, onClick1: () -> Unit, onClick2
         OutlinedTextField(
             value = text,
             onValueChange = { text = it },
-            label = { Text("Опиши, что ты чувствуешь") },
+            label = {
+                Text(text = "Опиши здесь", style = labelTextStyle)
+            },
             textStyle = mediumTextStyle,
             colors = OutlinedTextFieldDefaults.colors(
                 focusedLabelColor = activeBorderField,
@@ -91,7 +96,7 @@ fun OneFeelDescribing(name: String, color: Color, onClick1: () -> Unit, onClick2
                 ),
                 onClick = { onClick1() },
                 modifier = Modifier.weight(1f)
-            ) { Text("Вернуться") }
+            ) { Text(text = "Вернуться", style = mediumTextStyle) }
             ElevatedButton(
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(0xFFD6F5B3),
@@ -99,8 +104,8 @@ fun OneFeelDescribing(name: String, color: Color, onClick1: () -> Unit, onClick2
                 ),
                 onClick = { onClick2() },
                 elevation = ButtonDefaults.buttonElevation(defaultElevation = 5.dp),
-                modifier = Modifier.weight(1.5f)
-            ) { Text("Принять") }
+                modifier = Modifier.weight(1.1f)
+            ) { Text(text = "Принять", style = mediumTextStyle) }
         }
     }
 }

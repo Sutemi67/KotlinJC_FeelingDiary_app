@@ -22,3 +22,10 @@ val titleTextStyle = TextStyle(
     lineHeight = 28.sp,
     letterSpacing = 0.sp
 )
+val labelTextStyle = TextStyle(
+    fontFamily = FontFamily(Font(R.font.comfortaa_regular)),
+    fontWeight = FontWeight.Light,
+    fontSize = 12.sp,
+    lineHeight = 28.sp,
+    letterSpacing = 0.sp
+)
