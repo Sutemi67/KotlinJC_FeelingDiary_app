@@ -1,4 +1,4 @@
-package apc.appcradle.kotlinjc_feelingdiary_app.cards
+package apc.appcradle.kotlinjc_feelingdiary_app.ui.cards.onefeeldescribing
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -25,7 +25,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import apc.appcradle.kotlinjc_feelingdiary_app.data.angerFeelingsList
+import apc.appcradle.kotlinjc_feelingdiary_app.data.angerFeelingsLists
+import apc.appcradle.kotlinjc_feelingdiary_app.ui.MainViewModel
+import apc.appcradle.kotlinjc_feelingdiary_app.ui.cards.ListItem
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.activeBorderField
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.dividerColor
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.funColor200
@@ -34,9 +36,17 @@ import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.labelTextStyle
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.loveColor200
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.mediumTextStyle
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.sadnessColor200
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun OneFeelDescribing(name: String, color: Color, onClick1: () -> Unit, onClick2: () -> Unit) {
+fun OneFeelDescribing(
+    name: String,
+    color: Color,
+    parentFeel: String,
+    onClick1: () -> Unit,
+    onClick2: () -> Unit,
+    viewModel: MainViewModel = koinViewModel()
+) {
 
     var sliderPosition by remember { mutableFloatStateOf(0f) }
     var text by remember { mutableStateOf("") }
@@ -54,15 +64,12 @@ fun OneFeelDescribing(name: String, color: Color, onClick1: () -> Unit, onClick2
             modifier = Modifier.padding(vertical = 40.dp)
         )
         Text(
-            text = "Опиши, насколько сильно твое чувство и, если захочешь, добавь комментарий\n\n" +
-                    "Что ты хочешь сделать сейчас?\n\n" +
-                    "Что ты чувствуешь сейчас?",
+            text = "Опиши, насколько сильно твое чувство и, если захочешь, добавь комментарий",
             style = mediumTextStyle,
         )
-
         Slider(
             modifier = Modifier
-                .padding(vertical = 40.dp),
+                .padding(vertical = 30.dp),
             value = sliderPosition,
             onValueChange = { sliderPosition = it },
             colors = SliderDefaults.colors(
@@ -72,6 +79,12 @@ fun OneFeelDescribing(name: String, color: Color, onClick1: () -> Unit, onClick2
             ),
             valueRange = 0f..10f
         )
+        Text(
+            text = " Попробуй ответить на вопросы: \n\n'Что случилось?'\n 'Что вызвало твои чувства?'\n 'Кто был рядом?'\n 'Как ты обошёлся со своими чувствами?'\n 'Есть ли что-то, что хотелось бы сделать иначе?'\n 'Что ты чувствуешь сейчас?",
+            style = labelTextStyle,
+            modifier = Modifier.padding(bottom = 20.dp)
+        )
+
         OutlinedTextField(
             value = text,
             onValueChange = { text = it },
@@ -94,7 +107,9 @@ fun OneFeelDescribing(name: String, color: Color, onClick1: () -> Unit, onClick2
                     containerColor = Color(0x00FFFFFF),
                     contentColor = Color(0xA63B3B3B)
                 ),
-                onClick = { onClick1() },
+                onClick = {
+                    onClick1()
+                },
                 modifier = Modifier.weight(1f)
             ) { Text(text = "Вернуться", style = mediumTextStyle) }
             ElevatedButton(
@@ -102,7 +117,15 @@ fun OneFeelDescribing(name: String, color: Color, onClick1: () -> Unit, onClick2
                     containerColor = Color(0xFFD6F5B3),
                     contentColor = Color(0xE2393939),
                 ),
-                onClick = { onClick2() },
+                onClick = {
+                    viewModel.saveFeelData(
+                        feel = parentFeel,
+                        amount = sliderPosition,
+                        comment = text,
+                        color = color
+                    )
+                    onClick2()
+                },
                 elevation = ButtonDefaults.buttonElevation(defaultElevation = 5.dp),
                 modifier = Modifier.weight(1.1f)
             ) { Text(text = "Принять", style = mediumTextStyle) }
@@ -110,8 +133,15 @@ fun OneFeelDescribing(name: String, color: Color, onClick1: () -> Unit, onClick2
     }
 }
 
+
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun Lld() {
-    OneFeelDescribing(angerFeelingsList[1].name, angerFeelingsList[1].color, {}, {})
+    OneFeelDescribing(
+        angerFeelingsLists[1].name,
+        angerFeelingsLists[1].color,
+        "Anger",
+        {},
+        {},
+    )
 }

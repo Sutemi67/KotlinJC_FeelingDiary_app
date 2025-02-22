@@ -1,4 +1,4 @@
-package apc.appcradle.kotlinjc_feelingdiary_app.cards
+package apc.appcradle.kotlinjc_feelingdiary_app.ui.cards
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import apc.appcradle.kotlinjc_feelingdiary_app.CardState
+import apc.appcradle.kotlinjc_feelingdiary_app.domain.CardState
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.titleTextStyle
 
 @Composable

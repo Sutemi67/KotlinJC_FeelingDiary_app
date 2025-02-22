@@ -1,0 +1,1 @@
+package apc.appcradle.kotlinjc_feelingdiary_app.app

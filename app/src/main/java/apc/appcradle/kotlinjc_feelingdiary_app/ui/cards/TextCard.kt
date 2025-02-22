@@ -1,4 +1,4 @@
-package apc.appcradle.kotlinjc_feelingdiary_app.cards
+package apc.appcradle.kotlinjc_feelingdiary_app.ui.cards
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Box

@@ -1,4 +1,4 @@
-package apc.appcradle.kotlinjc_feelingdiary_app.cards
+package apc.appcradle.kotlinjc_feelingdiary_app.ui.cards
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.background
@@ -18,22 +18,23 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import apc.appcradle.kotlinjc_feelingdiary_app.CardState
 import apc.appcradle.kotlinjc_feelingdiary_app.R
-import apc.appcradle.kotlinjc_feelingdiary_app.data.angerFeelingsList
-import apc.appcradle.kotlinjc_feelingdiary_app.data.fearFeelingsList
-import apc.appcradle.kotlinjc_feelingdiary_app.data.funFeelingsList
-import apc.appcradle.kotlinjc_feelingdiary_app.data.loveFeelingsList
-import apc.appcradle.kotlinjc_feelingdiary_app.data.mainFeelingsList
-import apc.appcradle.kotlinjc_feelingdiary_app.data.sadFeelingsList
-import apc.appcradle.kotlinjc_feelingdiary_app.data.shameFeelingsList
+import apc.appcradle.kotlinjc_feelingdiary_app.data.angerFeelingsLists
+import apc.appcradle.kotlinjc_feelingdiary_app.data.fearFeelingsLists
+import apc.appcradle.kotlinjc_feelingdiary_app.data.mainFeelingsLists
+import apc.appcradle.kotlinjc_feelingdiary_app.domain.CardState
+import apc.appcradle.kotlinjc_feelingdiary_app.ui.MainViewModel
+import apc.appcradle.kotlinjc_feelingdiary_app.ui.cards.onefeeldescribing.OneFeelDescribing
+import apc.appcradle.kotlinjc_feelingdiary_app.ui.cards.pieChart.DiagramPage
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.KotlinJC_FeelingDiary_appTheme
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.funColor200
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.shameColor200
-
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun MainScreen() {
+fun MainScreen(
+    viewModel: MainViewModel = koinViewModel()
+) {
     var state = remember { mutableStateOf<CardState>(CardState.First) }
     var boxBg = Modifier
         .background(
@@ -61,7 +62,7 @@ fun MainScreen() {
                         }
                         Spacer(Modifier.height(30.dp))
                         TextCard(stringResource(R.string.firstCardText2), shameColor200) {
-                            state.value = CardState.Second
+                            state.value = CardState.Diagram
                         }
                     }
                 }
@@ -75,19 +76,24 @@ fun MainScreen() {
                     }
                 }
 
-                CardState.MainList -> ListOfFeels(mainFeelingsList) { st -> state.value = st }
-                CardState.ListAnger -> ListOfFeels(angerFeelingsList) { st -> state.value = st }
-                CardState.ListFear -> ListOfFeels(fearFeelingsList) { st -> state.value = st }
-                CardState.ListFun -> ListOfFeels(funFeelingsList) { st -> state.value = st }
-                CardState.ListLove -> ListOfFeels(loveFeelingsList) { st -> state.value = st }
-                CardState.ListSad -> ListOfFeels(sadFeelingsList) { st -> state.value = st }
-                CardState.ListShame -> ListOfFeels(shameFeelingsList) { st -> state.value = st }
+                CardState.MainList -> ListOfFeels(mainFeelingsLists) { st -> state.value = st }
+                CardState.ListAnger -> ListOfFeels(angerFeelingsLists) { st -> state.value = st }
+                CardState.ListFear -> ListOfFeels(fearFeelingsLists) { st -> state.value = st }
+//                CardState.ListFun -> ListOfFeels(funFeelingsLists) { st -> state.value = st }
+//                CardState.ListLove -> ListOfFeels(loveFeelingsLists) { st -> state.value = st }
+//                CardState.ListSad -> ListOfFeels(sadFeelingsLists) { st -> state.value = st }
+//                CardState.ListShame -> ListOfFeels(shameFeelingsLists) { st -> state.value = st }
                 is CardState.OneFeelDescribing -> OneFeelDescribing(
-                    targetState.feel,
-                    targetState.color,
-                    { state.value = CardState.MainList },
-                    { state.value = CardState.First },
+                    name = targetState.name,
+                    color = targetState.color,
+                    parentFeel = targetState.parentFeel,
+                    onClick1 = { state.value = CardState.MainList },
+                    onClick2 = { state.value = CardState.Diagram }
                 )
+
+                CardState.Diagram -> DiagramPage(
+                    onClick = { state.value = CardState.MainList })
+
             }
         }
     }

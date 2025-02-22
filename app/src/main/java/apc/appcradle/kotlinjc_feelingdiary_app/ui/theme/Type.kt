@@ -19,13 +19,13 @@ val titleTextStyle = TextStyle(
     fontFamily = FontFamily(Font(R.font.comfortaa_regular)),
     fontWeight = FontWeight.Normal,
     fontSize = 20.sp,
-    lineHeight = 28.sp,
-    letterSpacing = 0.sp
+//    lineHeight = 28.sp,
+//    letterSpacing = 0.sp
 )
 val labelTextStyle = TextStyle(
     fontFamily = FontFamily(Font(R.font.comfortaa_regular)),
     fontWeight = FontWeight.Light,
     fontSize = 12.sp,
-    lineHeight = 28.sp,
-    letterSpacing = 0.sp
+    lineHeight = 14.sp,
+    textAlign = TextAlign.Center
 )
