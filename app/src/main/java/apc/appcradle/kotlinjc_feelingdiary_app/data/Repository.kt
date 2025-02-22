@@ -13,7 +13,7 @@ class Repository(
 
     override suspend fun saveFeelData(feel: String, amount: Float, comment: String, color: Color) {
         val entity = converter.feelToEntity(feel, amount, comment, color)
-        database.feelDao().insert(entity)
+        database.feelDao().insertOrAddMeasurement(entity)
     }
 
     override suspend fun getFeelData(): List<FeelDiagram> {
