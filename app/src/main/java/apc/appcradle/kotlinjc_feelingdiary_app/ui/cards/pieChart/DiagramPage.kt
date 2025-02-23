@@ -1,6 +1,7 @@
 package apc.appcradle.kotlinjc_feelingdiary_app.ui.cards.pieChart
 
 import android.graphics.Paint
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -8,6 +9,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -20,12 +22,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateMapOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.nativeCanvas
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -51,7 +58,8 @@ fun DiagramPage(
     val data by viewModel.list.collectAsState()
     var startAngle = 0f
     val total = data.sumOf { it.amount.toDouble() }.toFloat()
-    var clearButtonVisibility = false
+    var clearButtonVisibility by remember { mutableStateOf(false) }
+    val expandedStates = remember { mutableStateMapOf<Int, Boolean>() }
 
     Column(
         modifier = Modifier.padding(16.dp),
@@ -113,14 +121,15 @@ fun DiagramPage(
         Spacer(modifier = Modifier.size(16.dp))
 
         // Легенда
-        Column {
-            data.forEach { item ->
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .width(200.dp)
-                        .padding(5.dp)
-                        .clickable(onClick = {})
+        Column(
+            modifier = Modifier.width(210.dp)
+        ) {
+            data.forEachIndexed { index, item ->
+                val isExpanded = expandedStates[index] ?: false
+                Column(
+                    Modifier
+                        .padding(6.dp)
+                        .clickable(onClick = { expandedStates[index] = !isExpanded })
                         .shadow(
                             elevation = 5.dp,
                             shape = RoundedCornerShape(10.dp)
@@ -129,24 +138,40 @@ fun DiagramPage(
                             color = rowColor,
                             shape = RoundedCornerShape(12.dp)
                         )
+                        .animateContentSize()
                 ) {
-                    Canvas(
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier
-                            .padding(horizontal = 5.dp)
-                            .size(20.dp)
+                            .fillMaxWidth()
+                            .padding(5.dp)
                     ) {
-                        drawRoundRect(
-                            color = item.color,
-                            size = size,
-                            cornerRadius = CornerRadius(15f, 15f)
+                        Canvas(
+                            modifier = Modifier
+                                .padding(horizontal = 5.dp)
+                                .size(20.dp)
+                        ) {
+                            drawRoundRect(
+                                color = item.color,
+                                size = size,
+                                cornerRadius = CornerRadius(15f, 15f)
+                            )
+                        }
+                        Text(
+                            style = mediumTextStyle,
+                            fontSize = 20.sp,
+                            text = item.name,
+                            modifier = Modifier.padding(8.dp),
                         )
                     }
-                    Text(
-                        style = mediumTextStyle,
-                        fontSize = 20.sp,
-                        text = item.name,
-                        modifier = Modifier.padding(8.dp),
-                    )
+                    if (isExpanded) {
+                        Text(
+                            text = item.comments,
+                            style = labelTextStyle,
+                            textAlign = TextAlign.Start,
+                            modifier = Modifier.padding(8.dp)
+                        )
+                    }
                 }
             }
         }

@@ -12,6 +12,9 @@ interface FeelDao {
     @Query("UPDATE feelings SET measurement = measurement + :amount WHERE nameOfMainFeel = :feel")
     suspend fun addMeasurement(feel: String, amount: Float): Int
 
+    @Query("UPDATE feelings SET comments = comments || '\n' || :comment WHERE nameOfMainFeel = :feel")
+    suspend fun addComment(feel: String, comment: String): Int
+
     // Если записи нет, вставляем её
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(cell: FeelEntity): Long
@@ -24,7 +27,8 @@ interface FeelDao {
     suspend fun insertOrAddMeasurement(cell: FeelEntity) {
         // Попытка обновить существующую запись. Метод вернёт количество обновлённых строк.
         val updatedRows = addMeasurement(cell.nameOfMainFeel, cell.measurement)
-        if (updatedRows == 0) {
+        val addComment = addComment(cell.nameOfMainFeel, cell.comments)
+        if (updatedRows == 0 && addComment == 0) {
             // Если обновлений не произошло (записи с таким feel нет), вставляем новую
             insert(cell)
         }
