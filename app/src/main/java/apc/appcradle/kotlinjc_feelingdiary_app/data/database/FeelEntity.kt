@@ -9,8 +9,8 @@ import androidx.room.PrimaryKey
     indices = [Index(value = ["nameOfMainFeel"], unique = true)]
 )
 data class FeelEntity(
-    @PrimaryKey(autoGenerate = true) val id: Long = 0,
-    val nameOfMainFeel: String,
+//    @PrimaryKey(autoGenerate = true) val id: Long = 0,
+    @PrimaryKey val nameOfMainFeel: String,
     val measurement: Float,
     val color: Long,
     val comments: String
