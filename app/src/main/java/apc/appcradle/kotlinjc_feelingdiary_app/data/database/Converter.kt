@@ -19,12 +19,12 @@ class Converter {
         return Gson().toJson(list)
     }
 
-    fun feelToEntity(feel: String, newAmount: Float, comment: String, color: Color): FeelEntity {
+    fun feelToEntity(feel: String, secondaryFeel:String, newAmount: Float, comment: String, color: Color): FeelEntity {
         return FeelEntity(
             nameOfMainFeel = feel,
             measurement = newAmount,
             color = color.value.toLong(),
-            comments = comment
+            comments = "$secondaryFeel - $comment"
         )
     }
 

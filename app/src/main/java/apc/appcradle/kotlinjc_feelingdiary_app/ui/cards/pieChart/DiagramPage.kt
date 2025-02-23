@@ -56,8 +56,8 @@ fun DiagramPage(
         viewModel.loadData()
     }
     val data by viewModel.list.collectAsState()
-    var startAngle = 0f
-    val total = data.sumOf { it.amount.toDouble() }.toFloat()
+
+
     var clearButtonVisibility by remember { mutableStateOf(false) }
     val expandedStates = remember { mutableStateMapOf<Int, Boolean>() }
 
@@ -85,9 +85,10 @@ fun DiagramPage(
                 Canvas(
                     modifier = Modifier.size(200.dp),
                 ) {
+                    var startAngle = 0f
+                    val total = data.sumOf { it.amount.toDouble() }.toFloat()
                     data.forEach { item ->
                         val sweepAngle = (item.amount / total) * 360
-
                         drawArc(
                             color = item.color,
                             startAngle = startAngle,
@@ -125,7 +126,7 @@ fun DiagramPage(
             modifier = Modifier.width(210.dp)
         ) {
             data.forEachIndexed { index, item ->
-                val isExpanded = expandedStates[index] ?: false
+                val isExpanded = expandedStates[index] == true
                 Column(
                     Modifier
                         .padding(6.dp)

@@ -11,8 +11,14 @@ class Repository(
     private val converter: Converter
 ) : RepositoryInterface {
 
-    override suspend fun saveFeelData(feel: String, amount: Float, comment: String, color: Color) {
-        val entity = converter.feelToEntity(feel, amount, comment, color)
+    override suspend fun saveFeelData(
+        feel: String,
+        secondaryFeel: String,
+        amount: Float,
+        comment: String,
+        color: Color
+    ) {
+        val entity = converter.feelToEntity(feel, secondaryFeel, amount, comment, color)
         database.feelDao().insertOrAddMeasurement(entity)
     }
 

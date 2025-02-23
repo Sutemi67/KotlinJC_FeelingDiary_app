@@ -28,9 +28,21 @@ class MainViewModel(
         }
     }
 
-    fun saveFeelData(feel: String, amount: Float, comment: String, color: Color) {
+    fun saveFeelData(
+        feel: String,
+        secondaryFeel: String,
+        amount: Float,
+        comment: String,
+        color: Color
+    ) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.saveFeelData(feel = feel, amount, comment, color)
+            repository.saveFeelData(
+                feel = feel,
+                secondaryFeel = secondaryFeel,
+                amount = amount,
+                comment = comment,
+                color = color
+            )
         }
     }
 
