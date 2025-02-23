@@ -29,4 +29,7 @@ interface FeelDao {
             insert(cell)
         }
     }
+
+    @Query("DELETE FROM feelings")
+    suspend fun clearData()
 }

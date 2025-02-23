@@ -34,4 +34,10 @@ class MainViewModel(
         }
     }
 
+    fun clearData() {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.clearData()
+            _list.value = repository.getFeelData()
+        }
+    }
 }

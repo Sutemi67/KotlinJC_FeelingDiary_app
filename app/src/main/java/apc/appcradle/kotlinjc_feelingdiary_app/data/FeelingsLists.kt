@@ -107,18 +107,18 @@ val angerFeelingsLists = listOf<Feel.Side>(
         CardState.OneFeelDescribing("Ярость", angerColor200, "Гнев"),
         mainFeelingsLists[0]
     ),
-//    Feel.Side(
-//        "Бешенство",
-//        angerColor200,
-//        CardState.OneFeelDescribing("Бешенство", angerColor200),
-//        mainFeelingsLists[0]
-//    ),
-//    Feel.Side(
-//        "Истерия",
-//        angerColor200,
-//        CardState.OneFeelDescribing("Истерия", angerColor200),
-//        mainFeelingsLists[0]
-//    ),
+    Feel.Side(
+        "Бешенство",
+        angerColor200,
+        CardState.OneFeelDescribing("Бешенство", angerColor200, "Гнев"),
+        mainFeelingsLists[0]
+    ),
+    Feel.Side(
+        "Истерия",
+        angerColor200,
+        CardState.OneFeelDescribing("Истерия", angerColor200, "Гнев"),
+        mainFeelingsLists[0]
+    ),
 )
 
 //endregion

@@ -1,5 +1,6 @@
 package apc.appcradle.kotlinjc_feelingdiary_app.ui.cards.onefeeldescribing
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -124,6 +125,7 @@ fun OneFeelDescribing(
                         comment = text,
                         color = color
                     )
+                    Log.d("path", "записали в базу значение")
                     onClick2()
                 },
                 elevation = ButtonDefaults.buttonElevation(defaultElevation = 5.dp),

@@ -91,8 +91,7 @@ fun MainScreen(
                     onClick2 = { state.value = CardState.Diagram }
                 )
 
-                CardState.Diagram -> DiagramPage(
-                    onClick = { state.value = CardState.MainList })
+                CardState.Diagram -> DiagramPage { state.value = CardState.First }
 
             }
         }

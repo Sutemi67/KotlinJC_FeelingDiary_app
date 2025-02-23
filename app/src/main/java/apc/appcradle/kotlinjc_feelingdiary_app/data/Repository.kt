@@ -21,4 +21,8 @@ class Repository(
         val list = converter.entityToFeelDiagramClass(entityList)
         return list
     }
+
+    override suspend fun clearData() {
+        database.feelDao().clearData()
+    }
 }

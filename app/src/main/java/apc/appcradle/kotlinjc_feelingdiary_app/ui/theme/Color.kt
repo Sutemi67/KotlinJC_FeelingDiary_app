@@ -20,3 +20,6 @@ val loveColor200 = Color(0xFFF6A8C2)
 val activeBorderField = Color(0x4A000000)
 val inactiveBorderField = Color(0x95282828)
 val dividerColor = Color(0x95656565)
+
+val clearButtonColor = Color(0xFFD9E6F1)
+val applyButtonColor = Color(0xFFC8E6C9)
