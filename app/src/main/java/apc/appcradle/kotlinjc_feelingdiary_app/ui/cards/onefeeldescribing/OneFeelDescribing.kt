@@ -23,6 +23,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import apc.appcradle.kotlinjc_feelingdiary_app.data.angerFeelingsLists
@@ -36,6 +37,7 @@ import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.labelTextStyle
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.loveColor200
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.mediumTextStyle
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.sadnessColor200
+import apc.appcradle.kotlinjc_feelingdiary_app.R
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -80,7 +82,7 @@ fun OneFeelDescribing(
             valueRange = 0f..10f
         )
         Text(
-            text = " Попробуй ответить на вопросы: \n\n'Что случилось?'\n 'Что вызвало твои чувства?'\n 'Кто был рядом?'\n 'Как ты обошёлся со своими чувствами?'\n 'Есть ли что-то, что хотелось бы сделать иначе?'\n 'Что ты чувствуешь сейчас?",
+            text = stringResource(R.string.questions),
             style = labelTextStyle,
             modifier = Modifier.padding(bottom = 20.dp)
         )

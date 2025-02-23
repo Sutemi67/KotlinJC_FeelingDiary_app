@@ -4,4 +4,5 @@
     <string name="secondCardText" translatable="false">Выбери из следующего списка основную эмоцию, а затем уточни.</string>
     <string name="firstCardText" translatable="false">Привет!\nХочешь записать, что ты чувствуешь сейчас?</string>
     <string name="firstCardText2" translatable="false">Хочу посмотреть историю моих записей</string>
+    <string name="questions">Попробуй ответить на вопросы: \n\n\'Что случилось?\'\n \'Что вызвало твои чувства?\'\n \'Кто был рядом?\'\n \'Как ты обошёлся со своими чувствами?\'\n \'Есть ли что-то, что хотелось бы сделать иначе?\'\n \'Что ты чувствуешь сейчас?</string>
 </resources>
