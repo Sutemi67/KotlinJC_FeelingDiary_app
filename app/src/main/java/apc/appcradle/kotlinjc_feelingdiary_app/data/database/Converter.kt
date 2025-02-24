@@ -28,17 +28,25 @@ class Converter {
     }
 
     fun entityToFeelDiagramClass(feelEntity: List<FeelEntity>): List<FeelDiagram> {
-        val list = mutableListOf<FeelDiagram>()
-        feelEntity.forEach { item ->
-            list.add(
-                FeelDiagram(
-                    name = item.nameOfMainFeel,
-                    amount = item.measurement,
-                    color = Color(item.color.toULong()),
-                    comments = item.comments
-                )
+//        val list = mutableListOf<FeelDiagram>()
+//        feelEntity.forEach { item ->
+//            list.add(
+//                FeelDiagram(
+//                    name = item.nameOfMainFeel,
+//                    amount = item.measurement,
+//                    color = Color(item.color.toULong()),
+//                    comments = item.comments
+//                )
+//            )
+//        }
+//        return list.toList()
+        return feelEntity.map { item ->
+            FeelDiagram(
+                name = item.nameOfMainFeel,
+                amount = item.measurement,
+                color = Color(item.color.toULong()),
+                comments = item.comments
             )
-        }
-        return list.toList()
+        }.sortedByDescending { it.amount }
     }
 }

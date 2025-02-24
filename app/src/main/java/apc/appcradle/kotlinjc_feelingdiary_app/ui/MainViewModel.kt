@@ -1,5 +1,6 @@
 package apc.appcradle.kotlinjc_feelingdiary_app.ui
 
+import android.util.Log
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -8,7 +9,6 @@ import apc.appcradle.kotlinjc_feelingdiary_app.domain.RepositoryInterface
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class MainViewModel(
@@ -16,15 +16,16 @@ class MainViewModel(
 ) : ViewModel() {
 
     private val _list = MutableStateFlow(emptyList<FeelDiagram>())
-    val list: StateFlow<List<FeelDiagram>> = _list.asStateFlow()
-
-    init {
-        loadData()
-    }
+    val list: StateFlow<List<FeelDiagram>> = _list
+    private val _isLoading = MutableStateFlow(false)
+    val isLoading: StateFlow<Boolean> = _isLoading
 
     fun loadData() {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(Dispatchers.Default) {
+            _isLoading.value = true
             _list.value = repository.getFeelData()
+            _isLoading.value = false
+            Log.d("path", "просто load data")
         }
     }
 
@@ -35,7 +36,7 @@ class MainViewModel(
         comment: String,
         color: Color
     ) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(Dispatchers.Default) {
             repository.saveFeelData(
                 feel = feel,
                 secondaryFeel = secondaryFeel,
@@ -43,13 +44,17 @@ class MainViewModel(
                 comment = comment,
                 color = color
             )
+            _list.value = repository.getFeelData()
+            Log.d("path", "загрузка данных после сохранения")
+
         }
     }
 
     fun clearData() {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(Dispatchers.Default) {
             repository.clearData()
             _list.value = repository.getFeelData()
+            Log.d("path", "загрузка после очистки данных")
         }
     }
 }
