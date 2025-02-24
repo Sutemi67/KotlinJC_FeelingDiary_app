@@ -12,15 +12,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.nativeCanvas
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.core.content.res.ResourcesCompat
 import apc.appcradle.kotlinjc_feelingdiary_app.R
 import apc.appcradle.kotlinjc_feelingdiary_app.domain.FeelDiagram
+import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.angerColor200
+import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.sadnessColor200
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
-
 
 @Composable
 fun Diagram(data: List<FeelDiagram>, viewWidth: Dp, context: Context) {
@@ -28,8 +31,8 @@ fun Diagram(data: List<FeelDiagram>, viewWidth: Dp, context: Context) {
         modifier = Modifier
             .padding(16.dp)
             .shadow(
-                elevation = 18.dp, // Высота тени
-                shape = RoundedCornerShape(200.dp) // Форма тени
+                elevation = 18.dp,
+                shape = RoundedCornerShape(200.dp)
             )
     ) {
         Canvas(
@@ -52,7 +55,6 @@ fun Diagram(data: List<FeelDiagram>, viewWidth: Dp, context: Context) {
                     size = size
                 )
 
-                // Добавим подписи
                 val angle = (startAngle + sweepAngle / 2) * (PI.toFloat() / 180f)
                 val radius = size.width / 2 * 0.6f
                 val x = size.width / 2 + cos(angle) * radius
@@ -77,4 +79,17 @@ fun Diagram(data: List<FeelDiagram>, viewWidth: Dp, context: Context) {
             }
         }
     }
+}
+
+@Preview
+@Composable
+fun Ff() {
+    Diagram(
+        listOf<FeelDiagram>(
+            FeelDiagram("sdfsdf", 23f, "sdf", angerColor200),
+            FeelDiagram("sdfsdf", 15f, "sdf", sadnessColor200)
+        ),
+        viewWidth = 200.dp,
+        context = LocalContext.current
+    )
 }
