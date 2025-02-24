@@ -81,7 +81,7 @@ fun Diagram(data: List<FeelDiagram>, viewWidth: Dp, context: Context) {
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun Ff() {
     Diagram(

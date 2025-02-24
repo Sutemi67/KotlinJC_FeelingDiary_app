@@ -19,7 +19,6 @@ val loveColor200 = Color(0xFFF6A8C2)
 
 val activeBorderField = Color(0x4A000000)
 val inactiveBorderField = Color(0x95282828)
-val rowBorderField = Color(0x2A282828)
 val dividerColor = Color(0x95656565)
 
 val rowColor = Color(0xFFE9EFD8)

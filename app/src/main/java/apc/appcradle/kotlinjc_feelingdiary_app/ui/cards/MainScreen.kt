@@ -69,10 +69,7 @@ fun MainScreen(
                 }
 
                 CardState.Second -> {
-                    TextCard(
-                        stringResource(R.string.secondCardText),
-                        Color(0xFFF1D0BE)
-                    ) {
+                    TextCard(stringResource(R.string.secondCardText), Color(0xFFF1D0BE)) {
                         state.value = CardState.MainList
                     }
                 }
@@ -84,6 +81,7 @@ fun MainScreen(
                 CardState.ListLove -> ListOfFeels(loveFeelingsLists) { st -> state.value = st }
                 CardState.ListSad -> ListOfFeels(sadFeelingsLists) { st -> state.value = st }
                 CardState.ListShame -> ListOfFeels(shameFeelingsLists) { st -> state.value = st }
+                CardState.Diagram -> DiagramPage { state.value = CardState.First }
                 is CardState.OneFeelDescribing -> OneFeelDescribing(
                     name = targetState.name,
                     color = targetState.color,
@@ -91,9 +89,6 @@ fun MainScreen(
                     onClick1 = { state.value = CardState.First },
                     onClick2 = { state.value = CardState.Diagram }
                 )
-
-                CardState.Diagram -> DiagramPage { state.value = CardState.First }
-
             }
         }
     }
