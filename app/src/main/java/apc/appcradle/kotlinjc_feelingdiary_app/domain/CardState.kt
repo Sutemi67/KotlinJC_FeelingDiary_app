@@ -8,11 +8,10 @@ sealed interface CardState {
     object MainList : CardState
     object ListAnger : CardState
     object ListFear : CardState
-
-    //    object ListShame : CardState
-//    object ListSad : CardState
-//    object ListFun : CardState
-//    object ListLove : CardState
+    object ListShame : CardState
+    object ListSad : CardState
+    object ListFun : CardState
+    object ListLove : CardState
 
     data class OneFeelDescribing(
         val name: String,

@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.FilledTonalButton
@@ -24,8 +25,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import apc.appcradle.kotlinjc_feelingdiary_app.R
 import apc.appcradle.kotlinjc_feelingdiary_app.data.angerFeelingsLists
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.MainViewModel
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.cards.ListItem
@@ -37,7 +40,6 @@ import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.labelTextStyle
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.loveColor200
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.mediumTextStyle
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.sadnessColor200
-import apc.appcradle.kotlinjc_feelingdiary_app.R
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -101,7 +103,8 @@ fun OneFeelDescribing(
                 unfocusedTextColor = inactiveBorderField,
                 unfocusedBorderColor = inactiveBorderField,
                 cursorColor = activeBorderField
-            )
+            ),
+            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done)
         )
         Row(modifier = Modifier.padding(vertical = 15.dp)) {
             FilledTonalButton(

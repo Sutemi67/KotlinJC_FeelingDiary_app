@@ -13,7 +13,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.FilledTonalButton
@@ -32,10 +34,13 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.nativeCanvas
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.res.ResourcesCompat
+import apc.appcradle.kotlinjc_feelingdiary_app.R
 import apc.appcradle.kotlinjc_feelingdiary_app.domain.FeelDiagram
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.MainViewModel
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.applyButtonColor
@@ -56,13 +61,16 @@ fun DiagramPage(
         viewModel.loadData()
     }
     val data by viewModel.list.collectAsState()
-
-
+    val context = LocalContext.current
+    val viewWidth = 300.dp
     var clearButtonVisibility by remember { mutableStateOf(false) }
     val expandedStates = remember { mutableStateMapOf<Int, Boolean>() }
+    val scrollState = rememberScrollState()
 
     Column(
-        modifier = Modifier.padding(16.dp),
+        modifier = Modifier
+            .padding(vertical = 50.dp)
+            .verticalScroll(scrollState),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         if (data == emptyList<FeelDiagram>()) {
@@ -83,7 +91,7 @@ fun DiagramPage(
                     )
             ) {
                 Canvas(
-                    modifier = Modifier.size(200.dp),
+                    modifier = Modifier.size(viewWidth),
                 ) {
                     var startAngle = 0f
                     val total = data.sumOf { it.amount.toDouble() }.toFloat()
@@ -109,11 +117,15 @@ fun DiagramPage(
                             y,
                             Paint().apply {
                                 color = android.graphics.Color.BLACK
-                                textSize = 24f
+                                textSize = 30f
                                 textAlign = Paint.Align.CENTER
+                                typeface =
+                                    ResourcesCompat.getFont(
+                                        context,
+                                        R.font.comfortaa_light
+                                    )
                             }
                         )
-
                         startAngle += sweepAngle
                     }
                 }
@@ -123,7 +135,7 @@ fun DiagramPage(
 
         // Легенда
         Column(
-            modifier = Modifier.width(210.dp)
+            modifier = Modifier.width(viewWidth)
         ) {
             data.forEachIndexed { index, item ->
                 val isExpanded = expandedStates[index] == true
@@ -190,7 +202,8 @@ fun DiagramPage(
                 onClick = onClickBack,
                 elevation = ButtonDefaults.buttonElevation(5.dp),
                 colors = ButtonDefaults.elevatedButtonColors(
-                    containerColor = applyButtonColor
+                    containerColor = applyButtonColor,
+                    contentColor = Color(0xA63B3B3B)
                 )
             ) { Text(text = "На главную", style = labelTextStyle) }
         }

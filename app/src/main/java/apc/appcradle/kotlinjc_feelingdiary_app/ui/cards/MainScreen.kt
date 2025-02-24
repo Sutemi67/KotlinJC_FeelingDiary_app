@@ -21,19 +21,20 @@ import androidx.compose.ui.unit.dp
 import apc.appcradle.kotlinjc_feelingdiary_app.R
 import apc.appcradle.kotlinjc_feelingdiary_app.data.angerFeelingsLists
 import apc.appcradle.kotlinjc_feelingdiary_app.data.fearFeelingsLists
+import apc.appcradle.kotlinjc_feelingdiary_app.data.funFeelingsLists
+import apc.appcradle.kotlinjc_feelingdiary_app.data.loveFeelingsLists
 import apc.appcradle.kotlinjc_feelingdiary_app.data.mainFeelingsLists
+import apc.appcradle.kotlinjc_feelingdiary_app.data.sadFeelingsLists
+import apc.appcradle.kotlinjc_feelingdiary_app.data.shameFeelingsLists
 import apc.appcradle.kotlinjc_feelingdiary_app.domain.CardState
-import apc.appcradle.kotlinjc_feelingdiary_app.ui.MainViewModel
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.cards.onefeeldescribing.OneFeelDescribing
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.cards.pieChart.DiagramPage
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.KotlinJC_FeelingDiary_appTheme
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.funColor200
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.shameColor200
-import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun MainScreen(
-    viewModel: MainViewModel = koinViewModel()
 ) {
     var state = remember { mutableStateOf<CardState>(CardState.First) }
     var boxBg = Modifier
@@ -79,15 +80,15 @@ fun MainScreen(
                 CardState.MainList -> ListOfFeels(mainFeelingsLists) { st -> state.value = st }
                 CardState.ListAnger -> ListOfFeels(angerFeelingsLists) { st -> state.value = st }
                 CardState.ListFear -> ListOfFeels(fearFeelingsLists) { st -> state.value = st }
-//                CardState.ListFun -> ListOfFeels(funFeelingsLists) { st -> state.value = st }
-//                CardState.ListLove -> ListOfFeels(loveFeelingsLists) { st -> state.value = st }
-//                CardState.ListSad -> ListOfFeels(sadFeelingsLists) { st -> state.value = st }
-//                CardState.ListShame -> ListOfFeels(shameFeelingsLists) { st -> state.value = st }
+                CardState.ListFun -> ListOfFeels(funFeelingsLists) { st -> state.value = st }
+                CardState.ListLove -> ListOfFeels(loveFeelingsLists) { st -> state.value = st }
+                CardState.ListSad -> ListOfFeels(sadFeelingsLists) { st -> state.value = st }
+                CardState.ListShame -> ListOfFeels(shameFeelingsLists) { st -> state.value = st }
                 is CardState.OneFeelDescribing -> OneFeelDescribing(
                     name = targetState.name,
                     color = targetState.color,
                     parentFeel = targetState.parentFeel,
-                    onClick1 = { state.value = CardState.MainList },
+                    onClick1 = { state.value = CardState.First },
                     onClick2 = { state.value = CardState.Diagram }
                 )
 
