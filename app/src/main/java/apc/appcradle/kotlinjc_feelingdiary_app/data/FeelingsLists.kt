@@ -289,7 +289,7 @@ val sadFeelingsLists = listOf<Feel>(
         mainFeelingsLists[3]
     ),
     Feel.Side(
-        "Печать", sadnessColor200, CardState.OneFeelDescribing("Печать", sadnessColor200, "Грусть"),
+        "Печаль", sadnessColor200, CardState.OneFeelDescribing("Печаль", sadnessColor200, "Грусть"),
         mainFeelingsLists[3]
     ),
     Feel.Side(
