@@ -17,7 +17,11 @@ import apc.appcradle.kotlinjc_feelingdiary_app.domain.CardState
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.titleTextStyle
 
 @Composable
-fun ListItem(text: String, color: Color, onClick: () -> Unit) {
+fun ListItem(
+    text: String,
+    color: Color,
+    onClick: () -> Unit
+) {
     Card(
         elevation = CardDefaults.cardElevation(3.dp),
         modifier = Modifier

@@ -19,7 +19,11 @@ import apc.appcradle.kotlinjc_feelingdiary_app.R
 import apc.appcradle.kotlinjc_feelingdiary_app.ui.theme.mediumTextStyle
 
 @Composable
-fun TextCard(text: String, color: Color, onClick: () -> Unit) {
+fun TextCard(
+    text: String,
+    color: Color,
+    onClick: () -> Unit
+) {
     Card(
         elevation = CardDefaults.cardElevation(9.dp),
         modifier = Modifier

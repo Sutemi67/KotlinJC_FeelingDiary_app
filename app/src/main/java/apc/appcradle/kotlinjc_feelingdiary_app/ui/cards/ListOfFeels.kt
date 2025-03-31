@@ -13,12 +13,14 @@ import apc.appcradle.kotlinjc_feelingdiary_app.domain.Feel
 
 
 @Composable
-fun ListOfFeels(feelingsList: List<Feel>, onClick: (CardState) -> Unit) {
+fun ListOfFeels(
+    feelingsList: List<Feel>,
+    onClick: (CardState) -> Unit
+) {
     LazyColumn(
         modifier = Modifier
             .wrapContentSize()
             .padding(vertical = 60.dp)
-
     ) {
         items(feelingsList.size) { index ->
             ListItem(
