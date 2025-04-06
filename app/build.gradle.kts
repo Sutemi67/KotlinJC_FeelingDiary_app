@@ -21,11 +21,15 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        }
+        debug {
+            applicationIdSuffix = ".debug"
+            isMinifyEnabled = false
         }
     }
     compileOptions {
@@ -59,7 +63,7 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     //Gson
-    implementation (libs.gson)
+    implementation(libs.gson)
 
     //Room
     ksp(libs.androidx.room.compiler)
@@ -67,10 +71,10 @@ dependencies {
     implementation(libs.androidx.room.ktx)
 
     //Koin
-    implementation (libs.koin.android )// Koin для Android
-    implementation( libs.androidx.lifecycle.viewmodel.compose)
-    implementation (libs.koin.androidx.compose.v350)
+    implementation(libs.koin.android)// Koin для Android
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.koin.androidx.compose.v350)
 
     //Navigation
-    implementation (libs.androidx.navigation.compose)
+    implementation(libs.androidx.navigation.compose)
 }
