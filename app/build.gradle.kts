@@ -3,9 +3,18 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     id("com.google.devtools.ksp")
+    id("com.google.gms.google-services")
 }
 
 android {
+    signingConfigs {
+        create("release") {
+            storeFile = file("D:\\YandexDisk\\Develop\\Keys\\keys.jks")
+            storePassword = "Uxs5y7rb_"
+            keyAlias = "key_diary"
+            keyPassword = "Uxs5y7rb_"
+        }
+    }
     namespace = "apc.appcradle.kotlinjc_feelingdiary_app"
     compileSdk = 35
 
@@ -13,8 +22,8 @@ android {
         applicationId = "apc.appcradle.kotlinjc_feelingdiary_app"
         minSdk = 24
         targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 2
+        versionName = "1.1.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -26,9 +35,10 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("release")
         }
         debug {
-            applicationIdSuffix = ".debug"
+//            applicationIdSuffix = ".debug"
             isMinifyEnabled = false
         }
     }
@@ -77,4 +87,9 @@ dependencies {
 
     //Navigation
     implementation(libs.androidx.navigation.compose)
+
+    //Firebase
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics)
+
 }
